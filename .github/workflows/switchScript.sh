@@ -631,6 +631,7 @@ else
     echo "ReverseNX-RT download\033[32m success\033[0m."
     unzip -oq ReverseNX-RT.zip
     rm ReverseNX-RT.zip
+    rm -rf SaltySD/patches
 fi
 
 ### Fetch ldn_mitm

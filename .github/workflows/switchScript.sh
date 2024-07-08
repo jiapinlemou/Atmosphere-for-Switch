@@ -254,20 +254,20 @@ else
     rm Awoo-Installer.zip
 fi
 
-### Fetch lastest Hekate-toolbox from https://github.com/WerWolv/Hekate-Toolbox/releases/latest
-curl -sL https://api.github.com/repos/WerWolv/Hekate-Toolbox/releases/latest \
+### Fetch lastest DeepSeaToolbox from https://github.com/Team-Neptune/DeepSea-Toolbox/releases/latest
+curl -sL https://api.github.com/repos/Team-Neptune/DeepSea-Toolbox/releases/latest \
   | jq '.tag_name' \
-  | xargs -I {} echo HekateToolbox {} >> ../description.txt
-curl -sL https://api.github.com/repos/WerWolv/Hekate-Toolbox/releases/latest \
-  | grep -oP '"browser_download_url": "\Khttps://[^"]*HekateToolbox.nro"' \
+  | xargs -I {} echo DeepSeaToolbox {} >> ../description.txt
+curl -sL https://api.github.com/repos/Team-Neptune/DeepSea-Toolbox/releases/latest \
+  | grep -oP '"browser_download_url": "\Khttps://[^"]*DeepSeaToolbox.nro"' \
   | sed 's/"//g' \
-  | xargs -I {} curl -sL {} -o HekateToolbox.nro
+  | xargs -I {} curl -sL {} -o DeepSeaToolbox.nro
 if [ $? -ne 0 ]; then
-    echo "HekateToolbox download\033[31m failed\033[0m."
+    echo "DeepSeaToolbox download\033[31m failed\033[0m."
 else
-    echo "HekateToolbox download\033[32m success\033[0m."
-    mkdir -p ./switch/HekateToolbox
-    mv HekateToolbox.nro ./switch/HekateToolbox
+    echo "DeepSeaToolbox download\033[32m success\033[0m."
+    mkdir -p ./switch/DeepSea-Toolbox
+    mv DeepSeaToolbox.nro ./switch/DeepSea-Toolbox
 fi
 
 ### Fetch lastest NX-Activity-Log
@@ -286,19 +286,19 @@ fi
 #ENDOFFILE
 
 ### Fetch lastest NX-Activity-Log
-curl -sL https://api.github.com/repos/tallbl0nde/NX-Activity-Log/releases/latest \
+curl -sL https://api.github.com/repos/zdm65477730/NX-Activity-Log/releases/latest \
   | jq '.name' \
   | xargs -I {} echo NX-Activity-Log {} >> ../description.txt
-curl -sL https://api.github.com/repos/tallbl0nde/NX-Activity-Log/releases/latest \
-  | grep -oP '"browser_download_url": "\Khttps://[^"]*NX-Activity-Log.nro"' \
+curl -sL https://api.github.com/repos/zdm65477730/NX-Activity-Log/releases/latest \
+  | grep -oP '"browser_download_url": "\Khttps://[^"]*NX-Activity-Log.zip"' \
   | sed 's/"//g' \
-  | xargs -I {} curl -sL {} -o NX-Activity-Log.nro
+  | xargs -I {} curl -sL {} -o NX-Activity-Log.zip
 if [ $? -ne 0 ]; then
     echo "NX-Activity-Log download\033[31m failed\033[0m."
 else
     echo "NX-Activity-Log download\033[32m success\033[0m."
-    mkdir -p ./switch/NX-Activity-Log
-    mv NX-Activity-Log.nro ./switch/NX-Activity-Log
+    unzip -oq NX-Activity-Log.zip
+    rm NX-Activity-Log.zip
 fi
 
 ### Fetch lastest NXThemesInstaller from https://github.com/exelix11/SwitchThemeInjector/releases/latest

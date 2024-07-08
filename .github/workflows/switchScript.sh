@@ -106,16 +106,6 @@ else
     rm sys-patch.zip
 fi
 
-### Fetch logo
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/theme/logo.zip -o logo.zip
-if [ $? -ne 0 ]; then
-    echo "logo download\033[31m failed\033[0m."
-else
-    echo "logo download\033[32m success\033[0m."
-    unzip -oq logo.zip
-    rm logo.zip
-fi
-
 ### Fetch lastest theme-patches from https://github.com/exelix11/theme-patches
 git clone https://github.com/exelix11/theme-patches
 if [ $? -ne 0 ]; then
@@ -603,6 +593,17 @@ else
     rm ovl-sysmodules.zip
 fi
 
+### Write config.ini in /config/ovl-sysmodules/config.ini
+cat > ./config/ovl-sysmodules/config.ini << ENDOFFILE
+[ovl-sysmodules]
+powerControlEnabled=1
+wifiControlEnabled=1
+sysmodulesControlEnabled=1
+bootFileControlEnabled=0
+hekateRestartControlEnabled=0
+consoleRegionControlEnabled=1
+ENDOFFILE
+
 ### Fetch StatusMonitor
 curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/StatusMonitor.zip -o StatusMonitor.zip
 if [ $? -ne 0 ]; then
@@ -734,6 +735,16 @@ else
     echo "SysDVR download\033[32m success\033[0m."
     unzip -oq SysDVR.zip
     rm SysDVR.zip
+fi
+
+### Fetch logo
+curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/theme/logo.zip -o logo.zip
+if [ $? -ne 0 ]; then
+    echo "logo download\033[31m failed\033[0m."
+else
+    echo "logo download\033[32m success\033[0m."
+    unzip -oq logo.zip
+    rm logo.zip
 fi
 
 ### boot-dat

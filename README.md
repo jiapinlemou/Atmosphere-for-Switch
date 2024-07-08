@@ -68,3 +68,4 @@
     - [x] 删除 `switch` 文件夹中 `reboot_to_hekate.nro`
     - [x] 删除 `switch` 文件夹中 `reboot_to_payload.nro`
 
+

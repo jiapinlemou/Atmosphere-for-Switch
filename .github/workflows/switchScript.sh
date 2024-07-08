@@ -893,6 +893,7 @@ cat > ./atmosphere/hosts/emummc.txt << ENDOFFILE
 # 屏蔽任天堂服务器
 127.0.0.1 *nintendo.*
 127.0.0.1 *nintendo-europe.com
+127.0.0.1 *nintendowifi.*
 127.0.0.1 *nintendoswitch.*
 127.0.0.1 ads.doubleclick.net
 127.0.0.1 s.ytimg.com

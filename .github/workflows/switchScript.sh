@@ -1011,7 +1011,7 @@ if [ $? -ne 0 ]; then
     echo "gzk download\033[31m failed\033[0m."
 else
     echo "gzk download\033[32m success\033[0m."
-    echo gzk >> ../description.txt
+#    echo gzk >> ../description.txt
     unzip -oq gzk.zip
     rm gzk.zip
 fi

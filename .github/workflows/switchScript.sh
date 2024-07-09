@@ -817,7 +817,7 @@ else
 fi
 
 ### Write more.ini in /bootloader/ini/
-# mkdir -p ./SwitchSD v$(date +%Y%m%d)/bootloader/ini
+mkdir -p ./SwitchSD v$(date +%Y%m%d)/bootloader/ini
 cat > ./bootloader/ini/more.ini << ENDOFFILE
 [SXOS]
 payload=bootloader/payloads/sxos.bin

@@ -75,7 +75,7 @@ else
 fi
 
 ### Fetch Sigpatches from https://gbatemp.net/threads/sigpatches-for-atmosphere-hekate-fss0-fusee-package3.571543/
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/sigpatches.zip -o sigpatches.zip
+curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/sys/sigpatches.zip -o sigpatches.zip
 if [ $? -ne 0 ]; then
     echo "sigpatches download\033[31m failed\033[0m."
 else
@@ -188,7 +188,7 @@ ENDOFFILE
 ###
 
 ### Fetch lastest Switch_90DNS_tester
-#curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/Switch_90DNS_tester.zip -o Switch_90DNS_tester.zip
+#curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/nro/Switch_90DNS_tester.zip -o Switch_90DNS_tester.zip
 #if [ $? -ne 0 ]; then
 #    echo "Switch_90DNS_tester download\033[31m failed\033[0m."
 #else
@@ -266,7 +266,7 @@ else
 fi
 
 ### Fetch lastest NX-Activity-Log
-#curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/NX-Activity-Log.zip -o NX-Activity-Log.zip
+#curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/nro/NX-Activity-Log.zip -o NX-Activity-Log.zip
 #if [ $? -ne 0 ]; then
 #    echo "NX-Activity-Log download\033[31m failed\033[0m."
 #else
@@ -445,7 +445,7 @@ else
 fi
 
 ### Fetch NX-Shell
-#curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/NX-Shell.zip -o NX-Shell.zip
+#curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/nro/NX-Shell.zip -o NX-Shell.zip
 #if [ $? -ne 0 ]; then
 #    echo "NX-Shell download\033[31m failed\033[0m."
 #else
@@ -504,7 +504,7 @@ else
 fi
 
 ### Fetch linkalho
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/linkalho.zip -o linkalho.zip
+curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/nro/linkalho.zip -o linkalho.zip
 if [ $? -ne 0 ]; then
     echo "linkalho download\033[31m failed\033[0m."
 else
@@ -767,7 +767,7 @@ fi
 # -------------------------------------------
 
 ### Fetch logo
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/theme/logo.zip -o logo.zip
+curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/sys/logo.zip -o logo.zip
 if [ $? -ne 0 ]; then
     echo "logo download\033[31m failed\*3[0m."
 else
@@ -777,7 +777,7 @@ else
 fi
 
 ### boot-dat
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/theme/boot-dat.zip -o boot-dat.zip
+curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/sys/boot-dat.zip -o boot-dat.zip
 if [ $? -ne 0 ]; then
     echo "boot-dat download\033[31m failed\033[0m."
 else
@@ -787,7 +787,7 @@ else
 fi
 
 ### readme
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/theme/readme.txt -o readme.txt
+curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/sys/readme.txt -o readme.txt
 if [ $? -ne 0 ]; then
     echo "readme download\033[31m failed\033[0m."
 else

@@ -465,6 +465,22 @@ else
     mv ReverseNX-Tool.nro ./switch/ReverseNX-Tool
 fi
 
+### Fetch lastest Goldleaf from https://github.com/XorTroll/Goldleaf/releases/latest
+curl -sL https://api.github.com/repos/XorTroll/Goldleaf/releases/latest \
+  | jq '.tag_name' \
+  | xargs -I {} echo Goldleaf {} >> ../description.txt
+curl -sL https://api.github.com/repos/XorTroll/Goldleaf/releases/latest \
+  | grep -oP '"browser_download_url": "\Khttps://[^"]*Goldleaf.nro"' \
+  | sed 's/"//g' \
+  | xargs -I {} curl -sL {} -o Goldleaf.nro
+if [ $? -ne 0 ]; then
+    echo "Goldleaf download\033[31m failed\033[0m."
+else
+    echo "Goldleaf download\033[32m success\033[0m."
+    mkdir -p ./switch/Goldleaf
+    mv Goldleaf.nro ./switch/Goldleaf
+fi
+
 ### Fetch linkalho
 curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/nro/linkalho.zip -o linkalho.zip
 if [ $? -ne 0 ]; then

@@ -9,17 +9,18 @@ set -e
 # -------------------------------------------
 
 ### Create a new folder for storing files
-if [ -d SwitchSD v$(date +%Y%m%d) ]; then
-  rm -rf SwitchSD v$(date +%Y%m%d)
+SwitchSD=SwitchSD v$(date +%Y%m%d)
+if [ -d $SwitchSD ]; then
+  rm -rf $SwitchSD
 fi
 if [ -e description.txt ]; then
   rm -rf description.txt
 fi
-mkdir -p ./SwitchSD v$(date +%Y%m%d)/bootloader/ini
-mkdir -p ./SwitchSD v$(date +%Y%m%d)/atmosphere/config
-mkdir -p ./SwitchSD v$(date +%Y%m%d)/atmosphere/hosts
+mkdir -p ./$SwitchSD/bootloader/ini
+mkdir -p ./$SwitchSD/atmosphere/config
+mkdir -p ./$SwitchSD/atmosphere/hosts
 
-cd SwitchSD v$(date +%Y%m%d)
+cd $SwitchSD
 
 # -------------------------------------------
 
@@ -817,7 +818,7 @@ else
 fi
 
 ### Write more.ini in /bootloader/ini/
-#mkdir -p ./SwitchSD v$(date +%Y%m%d)/bootloader/ini
+#mkdir -p ./$SwitchSD/bootloader/ini
 cat > ./bootloader/ini/more.ini << ENDOFFILE
 [SXOS]
 payload=bootloader/payloads/sxos.bin
@@ -1053,4 +1054,4 @@ fi
 # -------------------------------------------
 
 echo ""
-echo "\033[32mYour SwitchSD v$(date +%Y%m%d) card is prepared!\033[0m"
+echo "\033[32mYour $SwitchSD card is prepared!\033[0m"

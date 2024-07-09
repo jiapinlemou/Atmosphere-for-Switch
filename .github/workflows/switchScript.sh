@@ -16,6 +16,8 @@ if [ -e description.txt ]; then
   rm -rf description.txt
 fi
 
+mkdir -p ./SwitchSD
+
 cd SwitchSD
 
 # -------------------------------------------
@@ -753,34 +755,6 @@ fi
 
 # -------------------------------------------
 
-### Fetch logo
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/sys/logo.zip -o logo.zip
-if [ $? -ne 0 ]; then
-    echo "logo download\033[31m failed\*3[0m."
-else
-    echo "logo download\033[32m success\033[0m."
-    unzip -oq logo.zip
-    rm logo.zip
-fi
-
-### boot-dat
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/sys/boot-dat.zip -o boot-dat.zip
-if [ $? -ne 0 ]; then
-    echo "boot-dat download\033[31m failed\033[0m."
-else
-    echo "boot-dat download\033[32m success\033[0m."
-    unzip -oq boot-dat.zip
-    rm boot-dat.zip
-fi
-
-### readme
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/sys/readme.txt -o readme.txt
-if [ $? -ne 0 ]; then
-    echo "readme download\033[31m failed\033[0m."
-else
-    echo "readme download\033[32m success\033[0m."
-fi
-
 ### Rename hekate_ctcaer_*.bin to payload.bin
 find . -name "*hekate_ctcaer*" -exec mv {} payload.bin \;
 if [ $? -ne 0 ]; then
@@ -1036,6 +1010,34 @@ rm -f atmosphere/contents/4200000000000010/flags/*.*
 #4200000000000010--ldn_mitm
 
 # -------------------------------------------
+
+### Fetch logo
+curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/sys/logo.zip -o logo.zip
+if [ $? -ne 0 ]; then
+    echo "logo download\033[31m failed\*3[0m."
+else
+    echo "logo download\033[32m success\033[0m."
+    unzip -oq logo.zip
+    rm logo.zip
+fi
+
+### Fetch boot-dat
+curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/sys/boot-dat.zip -o boot-dat.zip
+if [ $? -ne 0 ]; then
+    echo "boot-dat download\033[31m failed\033[0m."
+else
+    echo "boot-dat download\033[32m success\033[0m."
+    unzip -oq boot-dat.zip
+    rm boot-dat.zip
+fi
+
+### Fetch readme
+curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/sys/readme.txt -o readme.txt
+if [ $? -ne 0 ]; then
+    echo "readme download\033[31m failed\033[0m."
+else
+    echo "readme download\033[32m success\033[0m."
+fi
 
 ### Fetch gzk
 curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/sys/gzk.zip -o gzk.zip

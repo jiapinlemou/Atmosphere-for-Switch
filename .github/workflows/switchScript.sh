@@ -15,10 +15,6 @@ fi
 if [ -e description.txt ]; then
   rm -rf description.txt
 fi
-mkdir -p ./SwitchSD/atmosphere/config
-mkdir -p ./SwitchSD/atmosphere/hosts
-mkdir -p ./SwitchSD/config/tesla
-mkdir -p ./SwitchSD/bootloader/ini
 
 cd SwitchSD
 
@@ -841,6 +837,7 @@ else
 fi
 
 ### Write more.ini in /bootloader/ini/
+mkdir -p ./SwitchSD/bootloader/ini
 cat > ./bootloader/ini/more.ini << ENDOFFILE
 [CFW-AUTO]
 payload=bootloader/payloads/fusee.bin
@@ -897,6 +894,7 @@ else
 fi
 
 ### Write emummc.txt & sysmmc.txt in /atmosphere/hosts
+mkdir -p ./SwitchSD/atmosphere/hosts
 cat > ./atmosphere/hosts/emummc.txt << ENDOFFILE
 # 屏蔽任天堂服务器
 127.0.0.1 *nintendo.*

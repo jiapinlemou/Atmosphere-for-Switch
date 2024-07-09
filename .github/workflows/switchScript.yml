@@ -30,14 +30,17 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         sudo -E apt install -y jq
-
+        
+    - name: Set current date
+      run: echo "CURRENT_DATE=$(date +%Y%m%d)" >> $GITHUB_ENV
+      
     - name: "Build & Release"
       run: |
         echo "DATE=$(date "+%Y%m%d %H:%M:%S")" >> $GITHUB_ENV
         echo "tag_name=$(date +%Y%m%d)" >> $GITHUB_ENV
         chmod +x $SCRIPT_SH
         ./$SCRIPT_SH
-        zip -rq SwitchSD$(date +%Y%m%d).zip SwitchSD$(date +%Y%m%d)
+        zip -rq SwitchSD v${CURRENT_DATE}.zip SwitchSD v${CURRENT_DATE}
 
     - name: Read description.txt
       id: description
@@ -54,7 +57,7 @@ jobs:
         commit: main
         token: ${{ secrets.GITHUB_TOKEN }}
         body: "${{ steps.description.outputs.content }}"
-        artifacts: "SwitchSD$(date +%Y%m%d).zip"
+        artifacts: "SwitchSD v${CURRENT_DATE}.zip"
 
     - name: Remove old Releases
       uses: dev-drprasad/delete-older-releases@v0.3.2

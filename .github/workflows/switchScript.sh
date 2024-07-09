@@ -481,6 +481,24 @@ else
     mv Goldleaf.nro ./switch/Goldleaf
 fi
 
+### Fetch lastest Safe_Reboot_Shutdown from https://github.com/dezem/Safe_Reboot_Shutdown/releases/latest
+curl -sL https://api.github.com/repos/dezem/Safe_Reboot_Shutdown/releases/latest \
+  | jq '.name' \
+  | xargs -I {} echo Safe_Reboot_Shutdown {} >> ../description.txt
+curl -sL https://api.github.com/repos/dezem/Safe_Reboot_Shutdown/releases/latest \
+  | grep -oP '"browser_download_url": "\Khttps://[^"]*Safe_Reboot_Shutdown.zip"' \
+  | sed 's/"//g' \
+  | xargs -I {} curl -sL {} -o Safe_Reboot_Shutdown.zip
+if [ $? -ne 0 ]; then
+    echo "Safe_Reboot_Shutdown download\033[31m failed\033[0m."
+else
+    echo "Safe_Reboot_Shutdown download\033[32m success\033[0m."
+    unzip -oq Safe_Reboot_Shutdown.zip
+    rm Safe_Reboot_Shutdown.zip
+    mkdir -p ./switch/SafeReboot
+    mv Safe_Reboot_Shutdown.nro ./switch/SafeReboot
+fi
+
 ### Fetch linkalho
 curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/nro/linkalho.zip -o linkalho.zip
 if [ $? -ne 0 ]; then

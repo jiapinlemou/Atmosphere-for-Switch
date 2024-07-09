@@ -58,7 +58,7 @@ else
     mv fusee.bin ./bootloader/payloads
 fi
 
-### Fetch Hekate + Nyx CHS from https://api.github.com/repos/easyworld/hekate/releases/latest
+### Fetch Hekate + Nyx CHS from https://github.com/easyworld/hekate/releases/latest
 curl -sL https://api.github.com/repos/easyworld/hekate/releases/latest \
   | jq '.name' \
   | xargs -I {} echo {} >> ../description.txt
@@ -89,7 +89,7 @@ sigpatches
 ENDOFFILE
 ###
   
-### Fetch sys-patch
+### Fetch sys-patch from https://github.com/impeeza/sys-patch/releases/latest
 curl -sL https://api.github.com/repos/impeeza/sys-patch/releases/latest \
   | jq '.tag_name' \
   | xargs -I {} echo sys-patch {} >> ../description.txt
@@ -201,7 +201,7 @@ ENDOFFILE
 #Switch_90DNS_tester
 #ENDOFFILE
 
-### Fetch lastest Switch_90DNS_tester
+### Fetch lastest Switch_90DNS_tester from https://github.com/meganukebmp/Switch_90DNS_tester/releases/latest
 curl -sL https://api.github.com/repos/meganukebmp/Switch_90DNS_tester/releases/latest \
   | jq '.tag_name' \
   | xargs -I {} echo Switch_90DNS_tester {} >> ../description.txt
@@ -280,7 +280,7 @@ fi
 #NX-Activity-Log
 #ENDOFFILE
 
-### Fetch lastest NX-Activity-Log
+### Fetch lastest NX-Activity-Log from https://github.com/zdm65477730/NX-Activity-Log/releases/latest
 curl -sL https://api.github.com/repos/zdm65477730/NX-Activity-Log/releases/latest \
   | jq '.name' \
   | xargs -I {} echo NX-Activity-Log {} >> ../description.txt
@@ -732,7 +732,7 @@ sys-tune
 ENDOFFILE
 ###
 
-### Fetch MissionControl
+### Fetch MissionControl from https://github.com//ndeadly/MissionControl/releases/latest
 curl -sL https://api.github.com/repos/ndeadly/MissionControl/releases/latest \
   | jq '.tag_name' \
   | xargs -I {} echo MissionControl {} >> ../description.txt
@@ -787,13 +787,11 @@ else
 fi
 
 ### readme
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/theme/readme.zip -o readme.zip
+curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/theme/readme.txt -o readme.txt
 if [ $? -ne 0 ]; then
     echo "readme download\033[31m failed\033[0m."
 else
     echo "readme download\033[32m success\033[0m."
-    unzip -oq readme.zip
-    rm readme.zip
 fi
 
 ### Rename hekate_ctcaer_*.bin to payload.bin

@@ -15,9 +15,7 @@ fi
 if [ -e description.txt ]; then
   rm -rf description.txt
 fi
-
 mkdir -p ./SwitchSD
-
 cd SwitchSD
 
 # -------------------------------------------

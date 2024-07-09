@@ -12,7 +12,7 @@ on:
     - cron: 0 7 * * *
 
 env:
-  SCRIPT_SH: ./.github/workflows/switchScript.sh
+  SCRIPT_SH: switchScript.sh
   TZ: Asia/Shanghai
 
 jobs:
@@ -40,7 +40,7 @@ jobs:
         echo "tag_name=$(date +%Y%m%d)" >> $GITHUB_ENV
         chmod +x $SCRIPT_SH
         #./$SCRIPT_SH
-        $SCRIPT_SH
+        ./.github/workflows/$SCRIPT_SH
         zip -rq SwitchSD v${CURRENT_DATE}.zip SwitchSD v${CURRENT_DATE}
 
     - name: Read description.txt

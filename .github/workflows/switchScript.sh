@@ -869,7 +869,6 @@ else
 fi
 
 ### Write emummc.txt & sysmmc.txt in /atmosphere/hosts
-# mkdir -p ./SwitchSD/atmosphere/hosts
 cat > ./atmosphere/hosts/emummc.txt << ENDOFFILE
 # 屏蔽任天堂服务器
 127.0.0.1 *nintendo.*

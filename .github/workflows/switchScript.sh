@@ -482,7 +482,7 @@ fi
 
 ### Fetch lastest Safe_Reboot_Shutdown from https://github.com/dezem/Safe_Reboot_Shutdown/releases/latest
 curl -sL https://api.github.com/repos/dezem/Safe_Reboot_Shutdown/releases/latest \
-  | jq '.name' \
+  | jq 'tag_name' \
   | xargs -I {} echo Safe_Reboot_Shutdown {} >> ../description.txt
 curl -sL https://api.github.com/repos/dezem/Safe_Reboot_Shutdown/releases/latest \
   | grep -oP '"browser_download_url": "\Khttps://[^"]*Safe_Reboot_Shutdown.zip"' \

@@ -74,19 +74,21 @@ else
     rm hekate.zip
 fi
 
-### Fetch Sigpatches from https://gbatemp.net/threads/sigpatches-for-atmosphere-hekate-fss0-fusee-package3.571543/
+### Fetch Sigpatches 
+### from https://gbatemp.net/threads/sigpatches-for-atmosphere-hekate-fss0-fusee-package3.571543/
 curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/sys/sigpatches.zip -o sigpatches.zip
 if [ $? -ne 0 ]; then
     echo "sigpatches download\033[31m failed\033[0m."
 else
     echo "sigpatches download\033[32m success\033[0m."
+    echo sigpatches >> ../description.txt
     unzip -oq sigpatches.zip
     rm sigpatches.zip
 fi
 ###
-cat >> ../description.txt << ENDOFFILE
-sigpatches
-ENDOFFILE
+#cat >> ../description.txt << ENDOFFILE
+#sigpatches
+#ENDOFFILE
 ###
   
 ### Fetch sys-patch from https://github.com/impeeza/sys-patch/releases/latest
@@ -187,20 +189,6 @@ cat >> ../description.txt << ENDOFFILE
 ENDOFFILE
 ###
 
-### Fetch lastest Switch_90DNS_tester
-#curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/nro/Switch_90DNS_tester.zip -o Switch_90DNS_tester.zip
-#if [ $? -ne 0 ]; then
-#    echo "Switch_90DNS_tester download\033[31m failed\033[0m."
-#else
-#    echo "Switch_90DNS_tester download\033[32m success\033[0m."
-#    unzip -oq Switch_90DNS_tester.zip
-#    rm Switch_90DNS_tester.zip
-#fi
-###
-#cat >> ../description.txt << ENDOFFILE
-#Switch_90DNS_tester
-#ENDOFFILE
-
 ### Fetch lastest Switch_90DNS_tester from https://github.com/meganukebmp/Switch_90DNS_tester/releases/latest
 curl -sL https://api.github.com/repos/meganukebmp/Switch_90DNS_tester/releases/latest \
   | jq '.tag_name' \
@@ -264,21 +252,6 @@ else
     mkdir -p ./switch/DeepSea-Toolbox
     mv DeepSeaToolbox.nro ./switch/DeepSea-Toolbox
 fi
-
-### Fetch lastest NX-Activity-Log
-#curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/nro/NX-Activity-Log.zip -o NX-Activity-Log.zip
-#if [ $? -ne 0 ]; then
-#    echo "NX-Activity-Log download\033[31m failed\033[0m."
-#else
-#    echo "NX-Activity-Log download\033[32m success\033[0m."
-#    unzip -oq NX-Activity-Log.zip
-#    rm NX-Activity-Log.zip
-#fi
-
-###
-#cat >> ../description.txt << ENDOFFILE
-#NX-Activity-Log
-#ENDOFFILE
 
 ### Fetch lastest NX-Activity-Log from https://github.com/zdm65477730/NX-Activity-Log/releases/latest
 curl -sL https://api.github.com/repos/zdm65477730/NX-Activity-Log/releases/latest \
@@ -444,17 +417,6 @@ else
     mv Moonlight-Switch.nro ./switch/Moonlight-Switch
 fi
 
-### Fetch NX-Shell
-#curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/nro/NX-Shell.zip -o NX-Shell.zip
-#if [ $? -ne 0 ]; then
-#    echo "NX-Shell download\033[31m failed\033[0m."
-#else
-#    echo "NX-Shell download\033[32m success\033[0m."
-#    echo NX-Shell >> ../description.txt
-#    unzip -oq NX-Shell.zip
-#    rm NX-Shell.zip
-#fi
-
 ### Fetch NX-Shell from https://github.com/joel16/NX-Shell/releases/latest
 curl -sL https://api.github.com/repos/joel16/NX-Shell/releases/latest \
   | jq '.tag_name' \
@@ -509,15 +471,10 @@ if [ $? -ne 0 ]; then
     echo "linkalho download\033[31m failed\033[0m."
 else
     echo "linkalho download\033[32m success\033[0m."
+    echo linkalho >> ../description.txt
     unzip -oq linkalho.zip
     rm linkalho.zip
 fi
-
-###
-cat >> ../description.txt << ENDOFFILE
-linkalho
-ENDOFFILE
-###
 
 # -------------------------------------------
 
@@ -1045,6 +1002,19 @@ rm -f atmosphere/contents/690000000000000D/flags/*.*
 #690000000000000D--sys-con
 rm -f atmosphere/contents/4200000000000010/flags/*.*
 #4200000000000010--ldn_mitm
+
+# -------------------------------------------
+
+### Fetch gzk
+curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/sys/gzk.zip -o gzk.zip
+if [ $? -ne 0 ]; then
+    echo "gzk download\033[31m failed\033[0m."
+else
+    echo "gzk download\033[32m success\033[0m."
+    echo gzk >> ../description.txt
+    unzip -oq gzk.zip
+    rm gzk.zip
+fi
 
 # -------------------------------------------
 

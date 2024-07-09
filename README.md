@@ -30,6 +30,7 @@
     - [x] 文件管理 `NX-Shell` [From Here](https://www.tekqart.com/thread-222735-1-1.html)
     - [x] 黑商店 `hb-appstore`  [From Here](https://github.com/fortheusers/hb-appstore/releases/latest)
     - [x] 底座管理工具 `ReverseNX-Tool`  [From Here](https://github.com/masagrator/ReverseNX-Tool/releases/latest)
+    - [x] Goldleaf金叶子 `Goldleaf` [From Here](https://github.com/XorTroll/Goldleaf/releases/latest)
     - [x] 离线关联账号 `linkalho` [From Here](https://github.com/)
 
   - 补丁

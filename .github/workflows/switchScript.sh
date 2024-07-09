@@ -254,7 +254,7 @@ fi
 
 ### Fetch lastest NX-Activity-Log from https://github.com/zdm65477730/NX-Activity-Log/releases/latest
 curl -sL https://api.github.com/repos/zdm65477730/NX-Activity-Log/releases/latest \
-  | jq '.name' \
+  | jq '.tag_name' \
   | xargs -I {} echo NX-Activity-Log {} >> ../description.txt
 curl -sL https://api.github.com/repos/zdm65477730/NX-Activity-Log/releases/latest \
   | grep -oP '"browser_download_url": "\Khttps://[^"]*NX-Activity-Log.zip"' \

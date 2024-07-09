@@ -15,10 +15,10 @@ fi
 if [ -e description.txt ]; then
   rm -rf description.txt
 fi
-mkdir -p ./SwitchSD v$(date +%Y%m%d)
+mkdir -p ./SwitchSD v$(date +%Y%m%d)/bootloader/ini
 mkdir -p ./SwitchSD v$(date +%Y%m%d)/atmosphere/config
 mkdir -p ./SwitchSD v$(date +%Y%m%d)/atmosphere/hosts
-mkdir -p ./SwitchSD v$(date +%Y%m%d)/bootloader/ini
+
 cd SwitchSD v$(date +%Y%m%d)
 
 # -------------------------------------------
@@ -817,7 +817,7 @@ else
 fi
 
 ### Write more.ini in /bootloader/ini/
-mkdir -p ./SwitchSD v$(date +%Y%m%d)/bootloader/ini
+#mkdir -p ./SwitchSD v$(date +%Y%m%d)/bootloader/ini
 cat > ./bootloader/ini/more.ini << ENDOFFILE
 [SXOS]
 payload=bootloader/payloads/sxos.bin

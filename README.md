@@ -60,6 +60,7 @@
     - [x] 移动 `fusee.bin` 至 `bootloader/payloads` 文件夹
     - [x] 将 `hekate_ctcaer_*.bin` 重命名为 `payload.bin`
     - [x] 在 `bootloader` 文件夹中创建 `hekate_ipl.ini`
+    - [x] 在 `bootloader/ini` 文件夹中创建 `more.ini`
     - [x] 在根目录中创建 `exosphere.ini`
     - [x] 在 `atmosphere/hosts` 文件夹中创建 `emummc.txt` 和 `sysmmc.txt`
     - [x] 在根目录中创建 `boot.ini`

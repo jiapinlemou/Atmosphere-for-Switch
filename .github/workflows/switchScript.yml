@@ -9,10 +9,10 @@ on:
       - '#README.md'
       - '#switchScript.sh'
   schedule:
-    - cron: 0 7 * * *
+    - cron: 0 4 * * *
 
 env:
-  SCRIPT_SH: switchScript.sh
+  SCRIPT_SH: ./.github/workflows/switchScript.sh
   TZ: Asia/Shanghai
 
 jobs:
@@ -30,17 +30,14 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         sudo -E apt install -y jq
-        
-    - name: Set current date
-      run: echo "CURRENT_DATE=$(date +%Y%m%d)" >> $GITHUB_ENV
-      
+
     - name: "Build & Release"
       run: |
         echo "DATE=$(date "+%Y%m%d %H:%M:%S")" >> $GITHUB_ENV
         echo "tag_name=$(date +%Y%m%d)" >> $GITHUB_ENV
         chmod +x $SCRIPT_SH
         ./$SCRIPT_SH
-        zip -rq SwitchSD v${CURRENT_DATE}.zip SwitchSD v${CURRENT_DATE}
+        zip -rq SwitchSD.zip SwitchSD
 
     - name: Read description.txt
       id: description
@@ -57,12 +54,12 @@ jobs:
         commit: main
         token: ${{ secrets.GITHUB_TOKEN }}
         body: "${{ steps.description.outputs.content }}"
-        artifacts: "SwitchSD v${CURRENT_DATE}.zip"
+        artifacts: "SwitchSD.zip"
 
     - name: Remove old Releases
       uses: dev-drprasad/delete-older-releases@v0.3.2
       with:
-        keep_latest: 5
+        keep_latest: 7
         delete_tags: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

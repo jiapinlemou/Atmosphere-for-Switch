@@ -22,6 +22,8 @@ mkdir -p ./SwitchSD/bootloader/ini
 
 cd SwitchSD
 
+# -------------------------------------------
+
 cat >> ../description.txt << ENDOFFILE
 大气层核心套件：
  
@@ -73,13 +75,6 @@ else
 fi
 
 ### Fetch Sigpatches from https://gbatemp.net/threads/sigpatches-for-atmosphere-hekate-fss0-fusee-package3.571543/
-
-###
-cat >> ../description.txt << ENDOFFILE
-sigpatches
-ENDOFFILE
-###
-  
 curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/sigpatches.zip -o sigpatches.zip
 if [ $? -ne 0 ]; then
     echo "sigpatches download\033[31m failed\033[0m."
@@ -88,6 +83,12 @@ else
     unzip -oq sigpatches.zip
     rm sigpatches.zip
 fi
+###
+cat >> ../description.txt << ENDOFFILE
+sigpatches
+ENDOFFILE
+###
+  
 ### Fetch sys-patch
 curl -sL https://api.github.com/repos/impeeza/sys-patch/releases/latest \
   | jq '.tag_name' \
@@ -116,6 +117,8 @@ else
     mv -f theme-patches/systemPatches ./themes/
     rm -rf theme-patches
 fi
+
+# -------------------------------------------
 
 ###
 cat >> ../description.txt << ENDOFFILE
@@ -171,6 +174,8 @@ else
     echo "CommonProblemResolver download\033[32m success\033[0m."
     mv CommonProblemResolver.bin ./bootloader/payloads
 fi
+
+# -------------------------------------------
 
 ###
 cat >> ../description.txt << ENDOFFILE
@@ -514,6 +519,8 @@ linkalho
 ENDOFFILE
 ###
 
+# -------------------------------------------
+
 ###
 cat >> ../description.txt << ENDOFFILE
  
@@ -537,7 +544,6 @@ fi
 ### Write config.ini in /config/tesla
 cat > ./config/tesla/config.ini << ENDOFFILE
 [tesla]
-; 特斯拉自定义快捷键。
 key_combo=L+DDOWN
 ENDOFFILE
 if [ $? -ne 0 ]; then
@@ -573,16 +579,6 @@ sys-tune
 sys-patch
 ENDOFFILE
 
-### Fetch EdiZon
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/EdiZon.zip -o EdiZon.zip
-if [ $? -ne 0 ]; then
-    echo "EdiZon download\033[31m failed\033[0m."
-else
-    echo "EdiZon download\033[32m success\033[0m."
-    unzip -oq EdiZon.zip
-    rm EdiZon.zip
-fi
-
 ### Fetch ovl-sysmodules
 curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/ovl-sysmodules.zip -o ovl-sysmodules.zip
 if [ $? -ne 0 ]; then
@@ -614,14 +610,14 @@ else
     rm StatusMonitor.zip
 fi
 
-### Fetch sys-clk
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/sys-clk.zip -o sys-clk.zip
+### Fetch EdiZon
+curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/EdiZon.zip -o EdiZon.zip
 if [ $? -ne 0 ]; then
-    echo "sys-clk download\033[31m failed\033[0m."
+    echo "EdiZon download\033[31m failed\033[0m."
 else
-    echo "sys-clk download\033[32m success\033[0m."
-    unzip -oq sys-clk.zip
-    rm sys-clk.zip
+    echo "EdiZon download\033[32m success\033[0m."
+    unzip -oq EdiZon.zip
+    rm EdiZon.zip
 fi
 
 ### Fetch ReverseNX-RT
@@ -635,14 +631,14 @@ else
     rm -rf SaltySD/patches
 fi
 
-### Fetch ldn_mitm
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/ldn_mitm.zip -o ldn_mitm.zip
+### Fetch sys-clk
+curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/sys-clk.zip -o sys-clk.zip
 if [ $? -ne 0 ]; then
-    echo "ldn_mitm download\033[31m failed\033[0m."
+    echo "sys-clk download\033[31m failed\033[0m."
 else
-    echo "ldn_mitm download\033[32m success\033[0m."
-    unzip -oq ldn_mitm.zip
-    rm ldn_mitm.zip
+    echo "sys-clk download\033[32m success\033[0m."
+    unzip -oq sys-clk.zip
+    rm sys-clk.zip
 fi
 
 ### Fetch emuiibo
@@ -655,6 +651,16 @@ else
     rm emuiibo.zip
 fi
 
+### Fetch ldn_mitm
+curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/ldn_mitm.zip -o ldn_mitm.zip
+if [ $? -ne 0 ]; then
+    echo "ldn_mitm download\033[31m failed\033[0m."
+else
+    echo "ldn_mitm download\033[32m success\033[0m."
+    unzip -oq ldn_mitm.zip
+    rm ldn_mitm.zip
+fi
+
 ### Fetch QuickNTP
 curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/QuickNTP.zip -o QuickNTP.zip
 if [ $? -ne 0 ]; then
@@ -663,6 +669,16 @@ else
     echo "QuickNTP download\033[32m success\033[0m."
     unzip -oq QuickNTP.zip
     rm QuickNTP.zip
+fi
+
+### sysDvr
+curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/SysDVR.zip -o SysDVR.zip
+if [ $? -ne 0 ]; then
+    echo "SysDVR download\033[31m failed\033[0m."
+else
+    echo "SysDVR download\033[32m success\033[0m."
+    unzip -oq SysDVR.zip
+    rm SysDVR.zip
 fi
 
 ### Fetch Fizeau
@@ -694,6 +710,27 @@ else
     unzip -oq sys-tune.zip
     rm sys-tune.zip
 fi
+
+###
+cat >> ../description.txt << ENDOFFILE
+
+nx-ovlloader
+Tesla-Menu
+ovl-sysmodules
+StatusMonitor
+EdiZon
+ReverseNX-RT
+sys-clk
+emuiibo
+ldn_mitm
+QuickNTP
+SysDVR
+Fizeau
+Zing
+sys-tune
+
+ENDOFFILE
+###
 
 ### Fetch MissionControl
 curl -sL https://api.github.com/repos/ndeadly/MissionControl/releases/latest \
@@ -727,20 +764,12 @@ else
     rm sys-con.zip
 fi
 
-### sysDvr
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/SysDVR.zip -o SysDVR.zip
-if [ $? -ne 0 ]; then
-    echo "SysDVR download\033[31m failed\033[0m."
-else
-    echo "SysDVR download\033[32m success\033[0m."
-    unzip -oq SysDVR.zip
-    rm SysDVR.zip
-fi
+# -------------------------------------------
 
 ### Fetch logo
 curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/theme/logo.zip -o logo.zip
 if [ $? -ne 0 ]; then
-    echo "logo download\033[31m failed\033[0m."
+    echo "logo download\033[31m failed\*3[0m."
 else
     echo "logo download\033[32m success\033[0m."
     unzip -oq logo.zip
@@ -766,27 +795,6 @@ else
     unzip -oq readme.zip
     rm readme.zip
 fi
-
-###
-cat >> ../description.txt << ENDOFFILE
-
-nx-ovlloader
-Tesla-Menu
-ovl-sysmodules
-StatusMonitor
-EdiZon
-ReverseNX-RT
-sys-clk
-emuiibo
-ldn_mitm
-QuickNTP
-SysDVR
-Fizeau
-Zing
-sys-tune
-
-ENDOFFILE
-###
 
 ### Rename hekate_ctcaer_*.bin to payload.bin
 find . -name "*hekate_ctcaer*" -exec mv {} payload.bin \;
@@ -836,11 +844,6 @@ stock=1
 icon=bootloader/res/switch.bmp
 id=ofw-sys
 {机身正版系统}
-
-[CFW-AUTO]
-payload=bootloader/payloads/fusee.bin
-icon=bootloader/res/auto.bmp
-{大气层-自动识别}
 ENDOFFILE
 if [ $? -ne 0 ]; then
     echo "Writing hekate_ipl.ini in ./bootloader/ directory\033[31m failed\033[0m."
@@ -850,6 +853,11 @@ fi
 
 ### Write more.ini in /bootloader/ini/
 cat > ./bootloader/ini/more.ini << ENDOFFILE
+[CFW-AUTO]
+payload=bootloader/payloads/fusee.bin
+icon=bootloader/res/auto.bmp
+{大气层-自动识别}
+
 [SXOS]
 payload=bootloader/payloads/sxos.bin
 icon=bootloader/res/sxos.bmp
@@ -1014,6 +1022,8 @@ if [ $? -ne 0 ]; then
 else
     echo "Writing system_settings.ini in ./atmosphere/config\033[32m success\033[0m."
 fi
+
+# -------------------------------------------
 
 ### Delete unneeded files
 rm -f switch/haze.nro

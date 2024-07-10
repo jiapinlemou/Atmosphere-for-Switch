@@ -1042,15 +1042,15 @@ else
 fi
 
 ### Fetch gzk
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/sys/gzk.zip -o gzk.zip
-if [ $? -ne 0 ]; then
-    echo "gzk download\033[31m failed\033[0m."
-else
-    echo "gzk download\033[32m success\033[0m."
-#    echo gzk >> ../description.txt
-    unzip -oq gzk.zip
-    rm gzk.zip
-fi
+#curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/sys/gzk.zip -o gzk.zip
+#if [ $? -ne 0 ]; then
+#    echo "gzk download\033[31m failed\033[0m."
+#else
+#    echo "gzk download\033[32m success\033[0m."
+##    echo gzk >> ../description.txt
+#    unzip -oq gzk.zip
+#    rm gzk.zip
+#fi
 
 # -------------------------------------------
 

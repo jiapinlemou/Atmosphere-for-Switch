@@ -1,14 +1,19 @@
-name: switchScript
+name: Scheduled Workflow with Multiple Branches
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * *'
 
 jobs:
-  build:
+  multi_branch_job:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        ref: main
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: Checkout and process branch
+        run: |
+git checkout Tesla || git checkout -b Tesla origin/Tesla
+git checkout Pure || git checkout -b Pure origin/Pure

@@ -516,7 +516,7 @@ cat >> ../description.txt << ENDOFFILE
  
 ------------------------------
  
-特斯拉中文版插件：
+特斯拉中文版插件：（纯净版 没有特斯拉插件）
  
 ENDOFFILE
 ###
@@ -1051,6 +1051,20 @@ fi
 #    unzip -oq gzk.zip
 #    rm gzk.zip
 #fi
+
+# -------------------------------------------
+
+###
+cat >> ../description.txt << ENDOFFILE
+ 
+------------------------------
+ 
+SwitchSD-Pure  为：纯净版
+SwitchSD-Tesla 为：特斯拉版
+SwitchSD       为：特斯拉版+sys-patch
+ 
+ENDOFFILE
+###
 
 # -------------------------------------------
 

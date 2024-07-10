@@ -1,4 +1,4 @@
-name: Scheduled Operations on Pure and Tesla Branches
+name: switchScript
 
 on:
   schedule:

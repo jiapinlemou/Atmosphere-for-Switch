@@ -3,7 +3,7 @@ name: switchScript
 on:
   workflow_dispatch:
   schedule:
-    - cron: '24 7 * * *' 
+    - cron: '28 7 * * *' 
 
 jobs:
   operate_on_branches:
@@ -17,10 +17,10 @@ jobs:
 
       - name: Checkout and operate on Pure branch
         run: |
-git checkout Pure
+git checkout Pure || git checkout -b Pure origin/Pure
 echo "Operating on Pure branch"
 
       - name: Checkout and operate on Tesla branch
         run: |
-git checkout Tesla
+git checkout Tesla || git checkout -b Tesla origin/Tesla
 echo "Operating on Tesla branch"

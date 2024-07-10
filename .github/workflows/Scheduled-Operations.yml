@@ -1,8 +1,9 @@
-name: switchScript
+name: Scheduled Operations on Pure and Tesla Branches
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '20 7 * * *' 
+    - cron: '22 7 * * *' 
 
 jobs:
   operate_on_branches:

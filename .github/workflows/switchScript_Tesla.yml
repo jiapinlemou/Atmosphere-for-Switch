@@ -1,4 +1,4 @@
-name: switchScript
+name: switchScript_Tesla
 
 on:
   workflow_dispatch:

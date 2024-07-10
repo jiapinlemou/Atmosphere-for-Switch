@@ -1,11 +1,7 @@
-name: switchScript_Tesla
+name: switchScript
 
 on:
   workflow_dispatch:
-  
-  issue_comment:
-    types: [ created ]
-  
   push:
     branches:
       - main
@@ -13,16 +9,16 @@ on:
       - '#README.md'
       - '#switchScript.sh'
   schedule:
-    - cron: 16 7 * * *
+    - cron: 8 8 * * *
 
 env:
-  SCRIPT_SH: ./.github/workflows/switchScript_Tesla.sh
+  SCRIPT_SH: ./.github/workflows/switchScript.sh
   TZ: Asia/Shanghai
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: contains(github.event.comment.body, '/Tesla')
+
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -41,7 +37,7 @@ jobs:
         echo "tag_name=$(date +%Y%m%d)" >> $GITHUB_ENV
         chmod +x $SCRIPT_SH
         ./$SCRIPT_SH
-        zip -rq SwitchSD-Tesla.zip SwitchSD-Tesla
+        zip -rq SwitchSD.zip SwitchSD
 
     - name: Read description.txt
       id: description
@@ -52,18 +48,18 @@ jobs:
     - name: Create release
       uses: ncipollo/release-action@v1
       with:
-        name: 【纯净版+特斯拉版】心悦大气层中文整合包 v${{ env.DATE }} 
+        name: 心悦大气层中文整合包 v${{ env.DATE }} 
         allowUpdates: true
         tag: ${{ env.tag_name }}
         commit: main
         token: ${{ secrets.GITHUB_TOKEN }}
         body: "${{ steps.description.outputs.content }}"
-        artifacts: "SwitchSD-Tesla.zip"
+        artifacts: "SwitchSD.zip"
 
     - name: Remove old Releases
       uses: dev-drprasad/delete-older-releases@v0.3.2
       with:
-        keep_latest: 7
+        keep_latest: 5
         delete_tags: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

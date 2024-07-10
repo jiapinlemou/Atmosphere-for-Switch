@@ -9,7 +9,7 @@ on:
       - '#README.md'
       - '#switchScript.sh'
   schedule:
-    - cron: 45 8 * * *
+    - cron: 05 08 * * *
 
 env:
   SCRIPT_SH: ./.github/workflows/switchScript.sh

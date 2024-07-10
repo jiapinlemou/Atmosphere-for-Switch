@@ -855,5 +855,19 @@ fi
 
 # -------------------------------------------
 
+###
+cat >> ../description.txt << ENDOFFILE
+ 
+------------------------------
+ 
+SwitchSD-Pure  为：纯净版
+SwitchSD-Tesla 为：特斯拉版
+SwitchSD       为：特斯拉版+sys-patch
+ 
+ENDOFFILE
+###
+
+# -------------------------------------------
+
 echo ""
 echo "\033[32mYour SwitchSD-Pure card is prepared!\033[0m"

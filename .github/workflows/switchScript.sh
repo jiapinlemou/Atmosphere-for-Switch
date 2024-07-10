@@ -9,17 +9,17 @@ set -e
 # -------------------------------------------
 
 ### Create a new folder for storing files
-if [ -d SwitchSD-Tesla ]; then
-  rm -rf SwitchSD-Tesla
+if [ -d SwitchSD ]; then
+  rm -rf SwitchSD
 fi
 if [ -e description.txt ]; then
   rm -rf description.txt
 fi
-mkdir -p ./SwitchSD-Tesla
-mkdir -p ./SwitchSD-Tesla/atmosphere/config
-mkdir -p ./SwitchSD-Tesla/atmosphere/hosts
-mkdir -p ./SwitchSD-Tesla/bootloader/ini
-cd SwitchSD-Tesla
+mkdir -p ./SwitchSD
+mkdir -p ./SwitchSD/atmosphere/config
+mkdir -p ./SwitchSD/atmosphere/hosts
+mkdir -p ./SwitchSD/bootloader/ini
+cd SwitchSD
 
 # -------------------------------------------
 
@@ -91,22 +91,22 @@ fi
 ###
   
 ### Fetch sys-patch from https://github.com/impeeza/sys-patch/releases/latest
-#curl -sL https://api.github.com/repos/impeeza/sys-patch/releases/latest \
-#  | jq '.tag_name' \
-#  | xargs -I {} echo sys-patch {} >> ../description.txt
-#curl -sL https://api.github.com/repos/impeeza/sys-patch/releases/latest \
-#  | grep -oP '"browser_download_url": "\Khttps://[^"]*sys-patch[^"]*.zip"' \
-#  | sed 's/"//g' \
-#  | xargs -I {} curl -sL {} -o sys-patch-zip.zip
-#if [ $? -ne 0 ]; then
-#    echo "sys-patch download\033[31m failed\033[0m."
-#else
-#    echo "sys-patch download\033[32m success\033[0m."
-#    unzip -oq sys-patch-zip.zip
-#    unzip -oq sys-patch.zip
-#    rm sys-patch-zip.zip
-#    rm sys-patch.zip
-#fi
+curl -sL https://api.github.com/repos/impeeza/sys-patch/releases/latest \
+  | jq '.tag_name' \
+  | xargs -I {} echo sys-patch {} >> ../description.txt
+curl -sL https://api.github.com/repos/impeeza/sys-patch/releases/latest \
+  | grep -oP '"browser_download_url": "\Khttps://[^"]*sys-patch[^"]*.zip"' \
+  | sed 's/"//g' \
+  | xargs -I {} curl -sL {} -o sys-patch-zip.zip
+if [ $? -ne 0 ]; then
+    echo "sys-patch download\033[31m failed\033[0m."
+else
+    echo "sys-patch download\033[32m success\033[0m."
+    unzip -oq sys-patch-zip.zip
+    unzip -oq sys-patch.zip
+    rm sys-patch-zip.zip
+    rm sys-patch.zip
+fi
 
 ### Fetch lastest theme-patches from https://github.com/exelix11/theme-patches
 git clone https://github.com/exelix11/theme-patches
@@ -516,7 +516,7 @@ cat >> ../description.txt << ENDOFFILE
  
 ------------------------------
  
-特斯拉中文版插件：（纯净版 没有特斯拉插件）
+特斯拉中文版插件：
  
 ENDOFFILE
 ###
@@ -1055,4 +1055,4 @@ fi
 # -------------------------------------------
 
 echo ""
-echo "\033[32mYour SwitchSD-Tesla card is prepared!\033[0m"
+echo "\033[32mYour Switch SD card is prepared!\033[0m"

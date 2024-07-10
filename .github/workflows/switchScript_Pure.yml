@@ -5,7 +5,7 @@ on:
   
   push:
     branches:
-      - Pure
+      - main
     paths:
       - '#README.md'
       - '#switchScript.sh'
@@ -13,7 +13,7 @@ on:
     - cron: 0 9 * * *
 
 env:
-  SCRIPT_SH: ./.github/workflows/switchScript.sh
+  SCRIPT_SH: ./.github/workflows/switchScript_Pure.sh
   TZ: Asia/Shanghai
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
-        ref: Pure
+        ref: main
 
     - name: Initialization environment
       env:
@@ -51,7 +51,7 @@ jobs:
         name: 【纯净版+特斯拉版】心悦大气层中文整合包 v${{ env.DATE }} 
         allowUpdates: true
         tag: ${{ env.tag_name }}
-        commit: Pure
+        commit: main
         token: ${{ secrets.GITHUB_TOKEN }}
         body: "${{ steps.description.outputs.content }}"
         artifacts: "SwitchSD-Pure.zip"

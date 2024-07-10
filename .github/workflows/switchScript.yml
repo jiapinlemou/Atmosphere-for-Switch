@@ -2,7 +2,8 @@ name: switchScript
 
 on:
   workflow_dispatch:
-
+  issue_comment:
+    types: [ created ]
 jobs:
   build:
     runs-on: ubuntu-latest

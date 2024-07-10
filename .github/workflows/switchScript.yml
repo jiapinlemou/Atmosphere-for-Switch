@@ -2,25 +2,13 @@ name: switchScript
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '28 7 * * *' 
 
 jobs:
-  operate_on_branches:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout main branch (for context)
-        uses: actions/checkout@v3
-        with:
-          ref: main
-
-
-      - name: Checkout and operate on Pure branch
-        run: |
-git checkout Pure || git checkout -b Pure origin/Pure
-echo "Operating on Pure branch"
-
-      - name: Checkout and operate on Tesla branch
-        run: |
-git checkout Tesla || git checkout -b Tesla origin/Tesla
-echo "Operating on Tesla branch"
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        ref: main

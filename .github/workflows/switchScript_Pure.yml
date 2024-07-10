@@ -9,6 +9,7 @@ on:
     paths:
       - '#README.md'
       - '#switchScript.sh'
+      
   schedule:
     - cron: 0 9 * * *
 
@@ -48,7 +49,7 @@ jobs:
     - name: Create release
       uses: ncipollo/release-action@v1
       with:
-        name: 【纯净版+特斯拉版】心悦大气层中文整合包 v${{ env.DATE }} 
+        name: 心悦大气层中文整合包 v${{ env.DATE }} 
         allowUpdates: true
         tag: ${{ env.tag_name }}
         commit: main

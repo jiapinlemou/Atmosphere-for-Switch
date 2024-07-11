@@ -19,6 +19,7 @@ mkdir -p ./SwitchSD
 mkdir -p ./SwitchSD/atmosphere/config
 mkdir -p ./SwitchSD/atmosphere/hosts
 mkdir -p ./SwitchSD/bootloader/ini
+mkdir -p ./SwitchSD/emuiibo/overlay
 cd SwitchSD
 
 # -------------------------------------------
@@ -991,6 +992,7 @@ rm -f switch/haze.nro
 rm -f switch/reboot_to_hekate.nro
 rm -f switch/reboot_to_payload.nro
 rm -rf mods
+
 ### Delete boot2 files
 rm -f atmosphere/contents/00FF0000A53BB665/flags/*.*
 #00FF0000A53BB665--SysDVR

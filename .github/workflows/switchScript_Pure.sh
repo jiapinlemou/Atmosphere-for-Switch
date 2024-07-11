@@ -515,27 +515,15 @@ else
     mv Firmware-Dumper.nro ./switch/Firmware-Dumper
 fi
 
-### Fetch lastest nxdumptool(nxdt_rw_poc) from https://github.com/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease
-curl -sL https://github.com/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease \
-  | jq '.name' \
-  | xargs -I {} echo {} >> ../description.txt
-curl -sL https://github.com/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease \
-  | grep -oP '"browser_download_url": "\Khttps://[^"]*nxdt_rw_poc.nro"' \
-  | sed 's/"//g' \
-  | xargs -I {} curl -sL {} -o nxdt_rw_poc.nro
+### Fetch lastest nxdumptool(nxdt_rw_poc) from https://github.com/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease/nxdt_rw_poc.nro
+curl -sL https://github.com/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease/nxdt_rw_poc.nro
 if [ $? -ne 0 ]; then
     echo "nxdt_rw_poc download\033[31m failed\033[0m."
 else
     echo "nxdt_rw_poc download\033[32m success\033[0m."
-    find . -name "*nxdt_rw_poc*" -exec mv {} nxdumptool.nro \;
-if [ $? -ne 0 ]; then
-    echo "Rename nxdt_rw_poc*.nro to nxdumptool.nro\033[31m failed\033[0m."
-else
-    echo "Rename hnxdt_rw_poc*.nro to nxdumptool.nro\033[32m success\033[0m."
-fi
-
+    echo nxdumptool-rewrite (latest commit build) >> ../description.txt
     mkdir -p ./switch/nxdumptool
-    mv nxdumptool.nro ./switch/nxdumptool
+    mv nxdt_rw_poc.nro ./switch/nxdumptool
 fi
 
 ### Fetch linkalho

@@ -500,19 +500,35 @@ else
 fi
 
 ### Fetch lastest Firmware-Dumper from https://github.com/mrdude2478/Switch-Firmware-Dumper/releases
-curl -sL https://api.github.com/repos/mrdude2478/Switch-Firmware-Dumper/releases/latest \
+#curl -sL https://api.github.com/repos/mrdude2478/Switch-Firmware-Dumper/releases/latest \
+#  | jq '.tag_name' \
+#  | xargs -I {} echo Firmware-Dumper {} >> ../description.txt
+#curl -sL https://api.github.com/repos/mrdude2478/Switch-Firmware-Dumper/releases/latest \
+#  | grep -oP '"browser_download_url": "\Khttps://[^"]*Firmware-Dumper.nro"' \
+#  | sed 's/"//g' \
+#  | xargs -I {} curl -sL {} -o Firmware-Dumper.nro
+#if [ $? -ne 0 ]; then
+#    echo "Firmware-Dumper download\033[31m failed\033[0m."
+#else
+#    echo "Firmware-Dumper download\033[32m success\033[0m."
+#    mkdir -p ./switch/Firmware-Dumper
+#    mv Firmware-Dumper.nro ./switch/Firmware-Dumper
+#fi
+
+### Fetch lastest Firmware-Dumper【Chinese lang】 from https://github.com/zdm65477730/Switch-Firmware-Dumper/releases/latest
+curl -sL https://api.github.com/repos/zdm65477730/Switch-Firmware-Dumper/releases/latest \
   | jq '.tag_name' \
-  | xargs -I {} echo Firmware-Dumper {} >> ../description.txt
-curl -sL https://api.github.com/repos/mrdude2478/Switch-Firmware-Dumper/releases/latest \
-  | grep -oP '"browser_download_url": "\Khttps://[^"]*Firmware-Dumper.nro"' \
+  | xargs -I {} echo NX-Activity-Log {} >> ../description.txt
+curl -sL https://api.github.com/repos/zdm65477730/NX-Activity-Log/releases/latest \
+  | grep -oP '"browser_download_url": "\Khttps://[^"]*Firmware-Dumper.zip"' \
   | sed 's/"//g' \
-  | xargs -I {} curl -sL {} -o Firmware-Dumper.nro
+  | xargs -I {} curl -sL {} -o Firmware-Dumper.zip
 if [ $? -ne 0 ]; then
     echo "Firmware-Dumper download\033[31m failed\033[0m."
 else
     echo "Firmware-Dumper download\033[32m success\033[0m."
-    mkdir -p ./switch/Firmware-Dumper
-    mv Firmware-Dumper.nro ./switch/Firmware-Dumper
+    unzip -oq Firmware-Dumper.zip
+    rm Firmware-Dumper.zip
 fi
 
 ### Fetch lastest nxdumptool(nxdt_rw_poc) from https://github.com/DarkMatterCore/nxdumptool/releases/download/rewrite-prerelease/nxdt_rw_poc.nro

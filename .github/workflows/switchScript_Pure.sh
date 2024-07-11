@@ -527,8 +527,15 @@ if [ $? -ne 0 ]; then
     echo "nxdt_rw_poc download\033[31m failed\033[0m."
 else
     echo "nxdt_rw_poc download\033[32m success\033[0m."
+    find . -name "*nxdt_rw_poc*" -exec mv {} nxdumptool.nro \;
+if [ $? -ne 0 ]; then
+    echo "Rename nxdt_rw_poc*.nro to nxdumptool.nro\033[31m failed\033[0m."
+else
+    echo "Rename hnxdt_rw_poc*.nro to nxdumptool.nro\033[32m success\033[0m."
+fi
+
     mkdir -p ./switch/nxdumptool
-    mv nxdt_rw_poc.nro ./switch/nxdumptool
+    mv nxdumptool.nro ./switch/nxdumptool
 fi
 
 ### Fetch linkalho

@@ -622,6 +622,18 @@ else
     rm -rf SaltySD/patches
 fi
 
+### Fetch lastest FPSLocker-Warehouse from https://github.com/masagrator/FPSLocker-Warehouse
+git clone https://github.com/masagrator/FPSLocker-Warehouse
+if [ $? -ne 0 ]; then
+    echo "FPSLocker-Warehouse download\033[31m failed\033[0m."
+else
+    echo "FPSLocker-Warehouse download\033[32m success\033[0m."
+#    mkdir SaltySD/plugins/FPSLocker
+    mv -f FPSLocker-Warehouse/SaltySD/plugins/FPSLocker/patches ./SaltySD/plugins/FPSLocker/
+    rm -rf FPSLocker-Warehouse
+fi
+
+
 ### Fetch sys-clk
 curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/sys-clk.zip -o sys-clk.zip
 if [ $? -ne 0 ]; then

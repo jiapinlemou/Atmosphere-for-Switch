@@ -676,7 +676,6 @@ else
     rm -rf FPSLocker-Warehouse
 fi
 
-
 ### Fetch sys-clk
 curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/sys-clk.zip -o sys-clk.zip
 if [ $? -ne 0 ]; then

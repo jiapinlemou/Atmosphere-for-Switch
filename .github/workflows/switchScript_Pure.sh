@@ -521,7 +521,7 @@ if [ $? -ne 0 ]; then
     echo "nxdt_rw_poc download\033[31m failed\033[0m."
 else
     echo "nxdt_rw_poc download\033[32m success\033[0m."
-    echo nxdumptool-rewrit >> ../description.txt
+    echo nxdumptool-rewrite latest >> ../description.txt
     mkdir -p ./switch/nxdumptool
     mv nxdt_rw_poc.nro ./switch/nxdumptool
 fi

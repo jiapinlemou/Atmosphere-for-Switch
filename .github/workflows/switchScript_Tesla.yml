@@ -11,7 +11,7 @@ on:
       - '#switchScript.sh'
       
   schedule:
-    - cron: 0 9 * * *
+    - cron: 0 4 * * *
 
 env:
   SCRIPT_SH: ./.github/workflows/switchScript_Tesla.sh

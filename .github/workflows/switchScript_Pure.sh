@@ -518,8 +518,8 @@ fi
 ### Fetch lastest Firmware-Dumper【Chinese lang】 from https://github.com/zdm65477730/Switch-Firmware-Dumper/releases/latest
 curl -sL https://api.github.com/repos/zdm65477730/Switch-Firmware-Dumper/releases/latest \
   | jq '.tag_name' \
-  | xargs -I {} echo NX-Activity-Log {} >> ../description.txt
-curl -sL https://api.github.com/repos/zdm65477730/NX-Activity-Log/releases/latest \
+  | xargs -I {} echo Firmware-Dumper {} >> ../description.txt
+curl -sL https://api.github.com/repos/zdm65477730/Switch-Firmware-Dumper/releases/latest \
   | grep -oP '"browser_download_url": "\Khttps://[^"]*Firmware-Dumper.zip"' \
   | sed 's/"//g' \
   | xargs -I {} curl -sL {} -o Firmware-Dumper.zip

@@ -516,10 +516,10 @@ else
 fi
 
 ### Fetch lastest nxdumptool(nxdt_rw_poc) from https://github.com/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease
-curl -sL https://api.github.com/repos/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease \
+curl -sL https://github.com/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease \
   | jq '.name' \
   | xargs -I {} echo {} >> ../description.txt
-curl -sL https://api.github.com/repos/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease \
+curl -sL https://github.com/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease \
   | grep -oP '"browser_download_url": "\Khttps://[^"]*nxdt_rw_poc.nro"' \
   | sed 's/"//g' \
   | xargs -I {} curl -sL {} -o nxdt_rw_poc.nro

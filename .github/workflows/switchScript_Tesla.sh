@@ -499,7 +499,6 @@ else
     mv Safe_Reboot_Shutdown.nro ./switch/SafeReboot
 fi
 
-
 ### Fetch lastest Firmware-Dumper from https://github.com/mrdude2478/Switch-Firmware-Dumper/releases
 curl -sL https://api.github.com/repos/mrdude2478/Switch-Firmware-Dumper/releases/latest \
   | jq '.tag_name' \

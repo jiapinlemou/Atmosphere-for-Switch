@@ -16,8 +16,10 @@ if [ -e description.txt ]; then
   rm -rf description.txt
 fi
 mkdir -p ./SwitchSD-Pure
+# mkdir -p ./SwitchSD-Pure/atmosphere/config
 mkdir -p ./SwitchSD-Pure/atmosphere/hosts
 mkdir -p ./SwitchSD-Pure/bootloader/ini
+# mkdir -p ./SwitchSD-Pure/emuiibo/overlay
 cd SwitchSD-Pure
 
 # -------------------------------------------
@@ -810,6 +812,25 @@ rm -f switch/haze.nro
 rm -f switch/reboot_to_hekate.nro
 rm -f switch/reboot_to_payload.nro
 rm -rf mods
+
+### Delete boot2 files
+rm -f atmosphere/contents/00FF0000A53BB665/flags/*.*
+#00FF0000A53BB665--SysDVR
+rm -f atmosphere/contents/00FF0000636C6BFF/flags/*.*
+#00FF0000636C6BFF--sys-clk
+rm -f atmosphere/contents/0000000000534C56/flags/*.*
+#0000000000534C56--SaltyNX
+rm -f atmosphere/contents/010000000000bd00/flags/*.*
+#010000000000bd00--MissionControl
+rm -f atmosphere/contents/0100000000000F12/flags/*.*
+#0100000000000f12--Fizeau
+rm -f atmosphere/contents/0100000000000352/flags/*.*
+#0100000000000352--emuiibo
+rm -f atmosphere/contents/690000000000000D/flags/*.*
+#690000000000000D--sys-con
+rm -f atmosphere/contents/4200000000000010/flags/*.*
+#4200000000000010--ldn_mitm
+
 # -------------------------------------------
 
 ### Fetch logo

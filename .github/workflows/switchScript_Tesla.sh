@@ -628,7 +628,7 @@ if [ $? -ne 0 ]; then
     echo "FPSLocker-Warehouse download\033[31m failed\033[0m."
 else
     echo "FPSLocker-Warehouse download\033[32m success\033[0m."
-    rm -rf ./SaltySD/plugins/FPSLocker/patches
+    rm -rf SaltySD/plugins/FPSLocker/patches
     mv -f FPSLocker-Warehouse/SaltySD/plugins/FPSLocker/patches ./SaltySD/plugins/FPSLocker/
     rm -rf FPSLocker-Warehouse
 fi

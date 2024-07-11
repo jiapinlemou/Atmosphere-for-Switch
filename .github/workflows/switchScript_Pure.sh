@@ -499,6 +499,39 @@ else
     mv Safe_Reboot_Shutdown.nro ./switch/SafeReboot
 fi
 
+
+### Fetch lastest Firmware-Dumper from https://github.com/mrdude2478/Switch-Firmware-Dumper/releases
+curl -sL https://api.github.com/repos/mrdude2478/Switch-Firmware-Dumper/releases/latest \
+  | jq '.tag_name' \
+  | xargs -I {} echo Firmware-Dumper {} >> ../description.txt
+curl -sL https://api.github.com/repos/mrdude2478/Switch-Firmware-Dumper/releases/latest \
+  | grep -oP '"browser_download_url": "\Khttps://[^"]*Firmware-Dumper.nro"' \
+  | sed 's/"//g' \
+  | xargs -I {} curl -sL {} -o Firmware-Dumper.nro
+if [ $? -ne 0 ]; then
+    echo "Firmware-Dumper download\033[31m failed\033[0m."
+else
+    echo "Firmware-Dumper download\033[32m success\033[0m."
+    mkdir -p ./switch/Firmware-Dumper
+    mv Firmware-Dumper.nro ./switch/Firmware-Dumper
+fi
+
+### Fetch lastest nxdumptool(nxdt_rw_poc) from https://github.com/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease
+curl -sL https://api.github.com/repos/DarkMatterCore/nxdumptool/releases/Pre-release \
+  | jq '.name' \
+  | xargs -I {} echo {} >> ../description.txt
+curl -sL https://api.github.com/repos/DarkMatterCore/nxdumptool/releases/Pre-release \
+  | grep -oP '"browser_download_url": "\Khttps://[^"]*nxdt_rw_poc.nro"' \
+  | sed 's/"//g' \
+  | xargs -I {} curl -sL {} -o nxdt_rw_poc.nro
+if [ $? -ne 0 ]; then
+    echo "nxdt_rw_poc download\033[31m failed\033[0m."
+else
+    echo "nxdt_rw_poc download\033[32m success\033[0m."
+    mkdir -p ./switch/nxdumptool
+    mv nxdt_rw_poc.nro ./switch/nxdumptool
+fi
+
 ### Fetch linkalho
 curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/nro/linkalho.zip -o linkalho.zip
 if [ $? -ne 0 ]; then

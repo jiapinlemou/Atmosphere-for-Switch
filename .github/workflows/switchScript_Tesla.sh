@@ -90,7 +90,7 @@ fi
 #sigpatches
 #ENDOFFILE
 ###
-  
+
 ### Fetch sys-patch from https://github.com/impeeza/sys-patch/releases/latest
 curl -sL https://api.github.com/repos/impeeza/sys-patch/releases/latest \
   | jq '.tag_name' \

@@ -515,18 +515,13 @@ else
     mv Firmware-Dumper.nro ./switch/Firmware-Dumper
 fi
 
-### Fetch lastest nxdumptool(nxdt_rw_poc) from https://github.com/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease
-curl -sL https://api.github.com/repos/DarkMatterCore/nxdumptool/releases/Pre-release \
-  | jq '.name' \
-  | xargs -I {} echo {} >> ../description.txt
-curl -sL https://api.github.com/repos/DarkMatterCore/nxdumptool/releases/Pre-release \
-  | grep -oP '"browser_download_url": "\Khttps://[^"]*nxdt_rw_poc.nro"' \
-  | sed 's/"//g' \
-  | xargs -I {} curl -sL {} -o nxdt_rw_poc.nro
+### Fetch lastest nxdumptool(nxdt_rw_poc) from https://github.com/DarkMatterCore/nxdumptool/releases/download/rewrite-prerelease/nxdt_rw_poc.nro
+curl -sL https://github.com/DarkMatterCore/nxdumptool/releases/download/rewrite-prerelease/nxdt_rw_poc.nro -o nxdt_rw_poc.nro
 if [ $? -ne 0 ]; then
     echo "nxdt_rw_poc download\033[31m failed\033[0m."
 else
     echo "nxdt_rw_poc download\033[32m success\033[0m."
+    echo nxdumptool-rewrite latest >> ../description.txt
     mkdir -p ./switch/nxdumptool
     mv nxdt_rw_poc.nro ./switch/nxdumptool
 fi

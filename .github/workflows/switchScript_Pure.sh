@@ -92,9 +92,9 @@ fi
 ###
 
 ### Fetch sys-patch from https://github.com/impeeza/sys-patch/releases/latest
-#curl -sL https://api.github.com/repos/impeeza/sys-patch/releases/latest \
-#  | jq '.tag_name' \
-#  | xargs -I {} echo sys-patch {} >> ../description.txt
+curl -sL https://api.github.com/repos/impeeza/sys-patch/releases/latest \
+  | jq '.tag_name' \
+  | xargs -I {} echo sys-patch {} >> ../description.txt
 #curl -sL https://api.github.com/repos/impeeza/sys-patch/releases/latest \
 #  | grep -oP '"browser_download_url": "\Khttps://[^"]*sys-patch[^"]*.zip"' \
 #  | sed 's/"//g' \

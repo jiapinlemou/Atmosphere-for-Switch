@@ -516,7 +516,7 @@ else
 fi
 
 ### Fetch lastest nxdumptool(nxdt_rw_poc) from https://github.com/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease/nxdt_rw_poc.nro
-curl -sL https://github.com/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease/nxdt_rw_poc.nro
+curl -sL https://github.com/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease/nxdt_rw_poc.nro -o nxdt_rw_poc.nro
 if [ $? -ne 0 ]; then
     echo "nxdt_rw_poc download\033[31m failed\033[0m."
 else

@@ -511,7 +511,7 @@ else
 fi
 
 # -------------------------------------------
-/*
+
 ###
 cat >> ../description.txt << ENDOFFILE
  
@@ -765,7 +765,7 @@ else
     unzip -oq sys-con.zip
     rm sys-con.zip
 fi
-*/
+
 # -------------------------------------------
 
 ### Rename hekate_ctcaer_*.bin to payload.bin

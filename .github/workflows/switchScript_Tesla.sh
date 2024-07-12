@@ -542,6 +542,22 @@ else
     mv nxdt_rw_poc.nro ./switch/nxdumptool
 fi
 
+### Fetch lastest Haku33 from https://github.com/StarDustCFW/Haku33/releases/latest
+curl -sL https://api.github.com/repos/StarDustCFW/Haku33/releases/latest \
+  | jq '.tag_name' \
+  | xargs -I {} echo Haku33 {} >> ../description.txt
+curl -sL https://api.github.com/repos/StarDustCFW/Haku33/releases/latest \
+  | grep -oP '"browser_download_url": "\Khttps://[^"]*Haku33.nro"' \
+  | sed 's/"//g' \
+  | xargs -I {} curl -sL {} -o Haku33.nro
+if [ $? -ne 0 ]; then
+    echo "Haku33 download\033[31m failed\033[0m."
+else
+    echo "Haku33 download\033[32m success\033[0m."
+    mkdir -p ./switch/Haku33
+    mv Haku33.nro ./switch/Haku33
+fi
+
 ### Fetch linkalho
 curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/nro/linkalho.zip -o linkalho.zip
 if [ $? -ne 0 ]; then

@@ -565,6 +565,19 @@ cat >> ../description.txt << ENDOFFILE
 ENDOFFILE
 ###
 
+### Fetch EdiZon.nro
+curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/EdiZon.zip -o EdiZon.zip
+if [ $? -ne 0 ]; then
+    echo "EdiZon download\033[31m failed\033[0m."
+else
+    echo "EdiZon download\033[32m success\033[0m."
+    unzip -oq EdiZon.zip
+    rm EdiZon.zip
+    rm -rf atmosphere/contents/0100000000000352
+    rm -rf switch/.overlays    
+fi
+
+
 ###
 cat >> ../description.txt << ENDOFFILE
 

@@ -163,14 +163,12 @@ fi
 #fi
 
 ### Fetch latest TegraExplorer.bin form https://github.com/suchmememanyskill/TegraExplorer/releases/download/4.2.0/TegraExplorer.bin
-curl -sL https://github.com/suchmememanyskill/TegraExplorer/releases/tag/4.2.0 \
-  | jq '.tag_name' \
-  | xargs -I {} echo TegraExplorer {} >> ../description.txt
 curl -sL https://github.com/suchmememanyskill/TegraExplorer/releases/download/4.2.0/TegraExplorer.bin -o TegraExplorer.bin
 if [ $? -ne 0 ]; then
     echo "TegraExplorer download\033[31m failed\033[0m."
 else
     echo "TegraExplorer download\033[32m success\033[0m."
+    echo TegraExplorer 4.2.0 >> ../description.txt
     mv TegraExplorer.bin ./bootloader/payloads
 fi
 

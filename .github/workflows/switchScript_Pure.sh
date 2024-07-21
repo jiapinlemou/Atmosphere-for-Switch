@@ -148,13 +148,25 @@ else
 fi
 
 ### Fetch latest TegraExplorer.bin form https://github.com/zdm65477730/TegraExplorer/releases
-curl -sL https://api.github.com/repos/zdm65477730/TegraExplorer/releases/latest \
+#curl -sL https://api.github.com/repos/zdm65477730/TegraExplorer/releases/latest \
+#  | jq '.tag_name' \
+#  | xargs -I {} echo TegraExplorer {} >> ../description.txt
+#curl -sL https://api.github.com/repos/zdm65477730/TegraExplorer/releases/latest \
+#  | grep -oP '"browser_download_url": "\Khttps://[^"]*TegraExplorer.bin"' \
+#  | sed 's/"//g' \
+#  | xargs -I {} curl -sL {} -o TegraExplorer.bin
+#if [ $? -ne 0 ]; then
+#    echo "TegraExplorer download\033[31m failed\033[0m."
+#else
+#    echo "TegraExplorer download\033[32m success\033[0m."
+#    mv TegraExplorer.bin ./bootloader/payloads
+#fi
+
+### Fetch latest TegraExplorer.bin form https://github.com/suchmememanyskill/TegraExplorer/releases/download/4.2.0/TegraExplorer.bin
+curl -sL https://github.com/suchmememanyskill/TegraExplorer/releases/tag/4.2.0
   | jq '.tag_name' \
   | xargs -I {} echo TegraExplorer {} >> ../description.txt
-curl -sL https://api.github.com/repos/zdm65477730/TegraExplorer/releases/latest \
-  | grep -oP '"browser_download_url": "\Khttps://[^"]*TegraExplorer.bin"' \
-  | sed 's/"//g' \
-  | xargs -I {} curl -sL {} -o TegraExplorer.bin
+curl -sL https://github.com/suchmememanyskill/TegraExplorer/releases/download/4.2.0/TegraExplorer.bin -o TegraExplorer.bin
 if [ $? -ne 0 ]; then
     echo "TegraExplorer download\033[31m failed\033[0m."
 else

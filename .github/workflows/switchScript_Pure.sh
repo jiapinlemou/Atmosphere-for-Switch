@@ -163,7 +163,7 @@ fi
 #fi
 
 ### Fetch latest TegraExplorer.bin form https://github.com/suchmememanyskill/TegraExplorer/releases/download/4.2.0/TegraExplorer.bin
-curl -sL https://github.com/suchmememanyskill/TegraExplorer/releases/tag/4.2.0
+curl -sL https://github.com/suchmememanyskill/TegraExplorer/releases/tag/4.2.0 \
   | jq '.tag_name' \
   | xargs -I {} echo TegraExplorer {} >> ../description.txt
 curl -sL https://github.com/suchmememanyskill/TegraExplorer/releases/download/4.2.0/TegraExplorer.bin -o TegraExplorer.bin

@@ -635,8 +635,6 @@ QuickNTP
 SysDVR
 Fizeau
 Zing
-sys-tune
-sys-patch
 ENDOFFILE
 
 ### Fetch ovl-sysmodules
@@ -655,7 +653,7 @@ cat > ./config/ovl-sysmodules/config.ini << ENDOFFILE
 powerControlEnabled=1
 wifiControlEnabled=1
 sysmodulesControlEnabled=1
-bootFileControlEnabled=0
+bootFileControlEnabled=1
 hekateRestartControlEnabled=0
 consoleRegionControlEnabled=1
 ENDOFFILE
@@ -752,35 +750,35 @@ else
     rm SysDVR.zip
 fi
 
-### Fetch Fizeau
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/Fizeau.zip -o Fizeau.zip
-if [ $? -ne 0 ]; then
-    echo "Fizeau download\033[31m failed\033[0m."
-else
-    echo "Fizeau download\033[32m success\033[0m."
-    unzip -oq Fizeau.zip
-    rm Fizeau.zip
-fi
+#### Fetch Fizeau
+#curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/Fizeau.zip -o Fizeau.zip
+#if [ $? -ne 0 ]; then
+#    echo "Fizeau download\033[31m failed\033[0m."
+#else
+#    echo "Fizeau download\033[32m success\033[0m."
+#    unzip -oq Fizeau.zip
+#    rm Fizeau.zip
+#fi
 
-### Fetch Zing
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/Zing.zip -o Zing.zip
-if [ $? -ne 0 ]; then
-    echo "Zing download\033[31m failed\033[0m."
-else
-    echo "Zing download\033[32m success\033[0m."
-    unzip -oq Zing.zip
-    rm Zing.zip
-fi
+#### Fetch Zing
+#curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/Zing.zip -o Zing.zip
+#if [ $? -ne 0 ]; then
+#    echo "Zing download\033[31m failed\033[0m."
+#else
+#    echo "Zing download\033[32m success\033[0m."
+#    unzip -oq Zing.zip
+#    rm Zing.zip
+#fi
 
-### Fetch sys-tune
-curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/sys-tune.zip -o sys-tune.zip
-if [ $? -ne 0 ]; then
-    echo "sys-tune download\033[31m failed\033[0m."
-else
-    echo "sys-tune download\033[32m success\033[0m."
-    unzip -oq sys-tune.zip
-    rm sys-tune.zip
-fi
+#### Fetch sys-tune
+#curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/plugins/sys-tune.zip -o sys-tune.zip
+#if [ $? -ne 0 ]; then
+#    echo "sys-tune download\033[31m failed\033[0m."
+#else
+#    echo "sys-tune download\033[32m success\033[0m."
+#    unzip -oq sys-tune.zip
+#    rm sys-tune.zip
+#fi
 
 ###
 cat >> ../description.txt << ENDOFFILE
@@ -796,9 +794,6 @@ emuiibo
 ldn_mitm
 QuickNTP
 SysDVR
-Fizeau
-Zing
-sys-tune
 
 ENDOFFILE
 ###
@@ -949,18 +944,54 @@ else
     echo "Writing exosphere.ini in root of SD card\033[32m success\033[0m."
 fi
 
+### Write default.txt in /atmosphere/hosts
+cat > ./atmosphere/hosts/default.txt << ENDOFFILE
+# Nintendo telemetry servers
+127.0.0.1 receive-%.dg.srv.nintendo.net receive-%.er.srv.nintendo.net
+ENDOFFILE
+if [ $? -ne 0 ]; then
+    echo "Writing default.txt in root of SD card\033[31m failed\033[0m."
+else
+    echo "Writing default.txt in root of SD card\033[32m success\033[0m."
+fi
+
 ### Write emummc.txt & sysmmc.txt in /atmosphere/hosts
 cat > ./atmosphere/hosts/emummc.txt << ENDOFFILE
 # 屏蔽任天堂服务器
-127.0.0.1 *nintendo.*
+# 90DNS
+127.0.0.1 *nintendo.com
+127.0.0.1 *nintendo.net
+127.0.0.1 *nintendo.jp
+127.0.0.1 *nintendo.co.jp
+127.0.0.1 *nintendo.co.uk
 127.0.0.1 *nintendo-europe.com
-127.0.0.1 *nintendowifi.*
-127.0.0.1 *nintendoswitch.*
-127.0.0.1 ads.doubleclick.net
-127.0.0.1 s.ytimg.com
-127.0.0.1 ad.youtube.com
-127.0.0.1 ads.youtube.com
-127.0.0.1 clients1.google.com
+127.0.0.1 *nintendowifi.net
+127.0.0.1 *nintendo.es
+127.0.0.1 *nintendo.co.kr
+127.0.0.1 *nintendo.tw
+127.0.0.1 *nintendo.com.hk
+127.0.0.1 *nintendo.com.au
+127.0.0.1 *nintendo.co.nz
+127.0.0.1 *nintendo.at
+127.0.0.1 *nintendo.be
+127.0.0.1 *nintendods.cz
+127.0.0.1 *nintendo.dk
+127.0.0.1 *nintendo.de
+127.0.0.1 *nintendo.fi
+127.0.0.1 *nintendo.fr
+127.0.0.1 *nintendo.gr
+127.0.0.1 *nintendo.hu
+127.0.0.1 *nintendo.it
+127.0.0.1 *nintendo.nl
+127.0.0.1 *nintendo.no
+127.0.0.1 *nintendo.pt
+127.0.0.1 *nintendo.ru
+127.0.0.1 *nintendo.co.za
+127.0.0.1 *nintendo.se
+127.0.0.1 *nintendo.ch
+127.0.0.1 *nintendoswitch.com
+127.0.0.1 *nintendoswitch.com.cn
+127.0.0.1 *nintendoswitch.cn
 207.246.121.77 *conntest.nintendowifi.net
 207.246.121.77 *ctest.cdn.nintendo.net
 221.230.145.22 *ctest.cdn.n.nintendoswitch.cn
@@ -1068,6 +1099,8 @@ fi
 # -------------------------------------------
 
 ### Delete unneeded files
+rm -f bootloader/res/icon_payload.bmp
+rm -f bootloader/res/icon_switch.bmp
 rm -f switch/haze.nro
 rm -f switch/reboot_to_hekate.nro
 rm -f switch/reboot_to_payload.nro

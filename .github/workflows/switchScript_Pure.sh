@@ -153,6 +153,7 @@ if [ $? -ne 0 ]; then
     echo "Lockpick_RCM download\033[31m failed\033[0m."
 else
     echo "Lockpick_RCM download\033[32m success\033[0m."
+    echo Lockpick_RCM v1.9.12 >> ../description.txt
     unzip -oq Lockpick_RCM.zip
     mv Lockpick_RCM.bin ./bootloader/payloads
     rm Lockpick_RCM.zip

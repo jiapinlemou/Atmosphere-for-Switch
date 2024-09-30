@@ -155,7 +155,7 @@ else
     echo "Lockpick_RCM download\033[32m success\033[0m."
     unzip -oq Lockpick_RCM.zip
     mv Lockpick_RCM.bin ./bootloader/payloads
-    rm boot-dat.zip
+    rm Lockpick_RCM.zip
 fi
 
 

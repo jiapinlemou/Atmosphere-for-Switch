@@ -132,20 +132,32 @@ Hekate paloads 二次引导软件：
 ENDOFFILE
 ###
 
-### Fetch latest Lockpick_RCM.bin from https://github.com/Decscots/Lockpick_RCM/releases/latest
-curl -sL https://api.github.com/repos/Decscots/Lockpick_RCM/releases/latest \
-  | jq '.tag_name' \
-  | xargs -I {} echo Lockpick_RCM {} >> ../description.txt
-curl -sL https://api.github.com/repos/Decscots/Lockpick_RCM/releases/latest \
-  | grep -oP '"browser_download_url": "\Khttps://[^"]*Lockpick_RCM.bin"' \
-  | sed 's/"//g' \
-  | xargs -I {} curl -sL {} -o Lockpick_RCM.bin
+#### Fetch latest Lockpick_RCM.bin from https://github.com/Decscots/Lockpick_RCM/releases/latest
+#curl -sL https://api.github.com/repos/Decscots/Lockpick_RCM/releases/latest \
+#  | jq '.tag_name' \
+#  | xargs -I {} echo Lockpick_RCM {} >> ../description.txt
+#curl -sL https://api.github.com/repos/Decscots/Lockpick_RCM/releases/latest \
+#  | grep -oP '"browser_download_url": "\Khttps://[^"]*Lockpick_RCM.bin"' \
+#  | sed 's/"//g' \
+#  | xargs -I {} curl -sL {} -o Lockpick_RCM.bin
+#if [ $? -ne 0 ]; then
+#    echo "Lockpick_RCM download\033[31m failed\033[0m."
+#else
+#    echo "Lockpick_RCM download\033[32m success\033[0m."
+#    mv Lockpick_RCM.bin ./bootloader/payloads
+#fi
+
+### Fetch Lockpick_RCM.bin
+curl -sL https://raw.githubusercontent.com/gzk47/SwitchPlugins/main/sys/Lockpick_RCM.zip -o Lockpick_RCM.zip
 if [ $? -ne 0 ]; then
     echo "Lockpick_RCM download\033[31m failed\033[0m."
 else
     echo "Lockpick_RCM download\033[32m success\033[0m."
+    unzip -oq Lockpick_RCM.zip
     mv Lockpick_RCM.bin ./bootloader/payloads
+    rm boot-dat.zip
 fi
+
 
 ### Fetch latest TegraExplorer.bin form https://github.com/zdm65477730/TegraExplorer/releases
 #curl -sL https://api.github.com/repos/zdm65477730/TegraExplorer/releases/latest \

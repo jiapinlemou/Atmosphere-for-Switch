@@ -831,7 +831,7 @@ curl -sL https://api.github.com/repos/o0Zz/sys-con/releases/latest \
   | jq '.name' \
   | xargs -I {} echo sys-con {} >> ../description.txt
 curl -sL https://api.github.com/repos/o0Zz/sys-con/releases/latest \
-  | grep -oP '"browser_download_url": "\Khttps://[^"]*sys-con[^"]*-1.7.x.zip"' \
+  | grep -oP '"browser_download_url": "\Khttps://[^"]*sys-con[^"]*-1.7.x-1.8.x.zip"' \
   | sed 's/"//g' \
   | xargs -I {} curl -sL {} -o sys-con.zip
 if [ $? -ne 0 ]; then

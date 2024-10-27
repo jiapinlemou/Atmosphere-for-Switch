@@ -103,7 +103,7 @@ if [ $? -ne 0 ]; then
     echo "sys-patch download\033[31m failed\033[0m."
 else
     echo "sys-patch download\033[32m success\033[0m."
-    unzip -oq sys-patch.7z
+    un7z -oq sys-patch.7z
     rm sys-patch.7z
 fi
 

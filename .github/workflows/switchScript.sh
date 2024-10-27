@@ -96,16 +96,14 @@ curl -sL https://api.github.com/repos/impeeza/sys-patch/releases/latest \
   | jq '.tag_name' \
   | xargs -I {} echo sys-patch {} >> ../description.txt
 curl -sL https://api.github.com/repos/impeeza/sys-patch/releases/latest \
-  | grep -oP '"browser_download_url": "\Khttps://[^"]*sys-patch[^"]*.zip"' \
+  | grep -oP '"browser_download_url": "\Khttps://[^"]*sys-patch[^"]*.7z"' \
   | sed 's/"//g' \
-  | xargs -I {} curl -sL {} -o sys-patch-zip.zip
+  | xargs -I {} curl -sL {} -o sys-patch.zip
 if [ $? -ne 0 ]; then
     echo "sys-patch download\033[31m failed\033[0m."
 else
     echo "sys-patch download\033[32m success\033[0m."
-    unzip -oq sys-patch-zip.zip
     unzip -oq sys-patch.zip
-    rm sys-patch-zip.zip
     rm sys-patch.zip
 fi
 

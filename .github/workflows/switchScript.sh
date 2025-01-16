@@ -157,7 +157,6 @@ else
     rm Lockpick_RCM.zip
 fi
 
-
 ### Fetch latest TegraExplorer.bin form https://github.com/zdm65477730/TegraExplorer/releases
 #curl -sL https://api.github.com/repos/zdm65477730/TegraExplorer/releases/latest \
 #  | jq '.tag_name' \

@@ -861,19 +861,14 @@ autohosoff=1
 autonogc=1
 updater2p=1
 
-{心悦}
+{心悦大气层整合版}
 
-[CFW-SYSNAND]
-emummc_force_disable=1
-fss0=atmosphere/package3
-kip1patch=nosigchk
-atmosphere=1
-logopath=bootloader/bootlogo.bmp
-icon=bootloader/res/sysnand.bmp
-id=cfw-sys
-{大气层-真实系统}
+[自动识别]
+payload=bootloader/payloads/fusee.bin
+icon=bootloader/res/auto.bmp
+{大气层-自动识别}
 
-[CFW-EMUNAND]
+[虚拟系统]
 emummcforce=1
 fss0=atmosphere/package3
 kip1patch=nosigchk
@@ -883,18 +878,23 @@ icon=bootloader/res/emunand.bmp
 id=cfw-emu
 {大气层-虚拟系统}
 
-[OFW-SYSNAND]
+[真实系统]
+emummc_force_disable=1
+fss0=atmosphere/package3
+kip1patch=nosigchk
+atmosphere=1
+logopath=bootloader/bootlogo.bmp
+icon=bootloader/res/sysnand.bmp
+id=cfw-sys
+{大气层-真实系统}
+
+[正版系统]
 emummc_force_disable=1
 fss0=atmosphere/package3
 stock=1
 icon=bootloader/res/switch.bmp
 id=ofw-sys
 {机身正版系统}
-
-[CFW-AUTO]
-payload=bootloader/payloads/fusee.bin
-icon=bootloader/res/auto.bmp
-{大气层-自动识别}
 ENDOFFILE
 if [ $? -ne 0 ]; then
     echo "Writing hekate_ipl.ini in ./bootloader/ directory\033[31m failed\033[0m."
